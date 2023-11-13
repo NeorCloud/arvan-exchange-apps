@@ -16,7 +16,7 @@ postgrescluster:
       requests:
         memory: 1Gi
         cpu: 1000m
-      limit:
+      limits:
         memory: 2Gi
         cpu: 2000m
   patroni:
