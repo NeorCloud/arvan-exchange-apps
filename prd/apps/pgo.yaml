@@ -9,7 +9,7 @@ spec:
   project: exchange-backend-prd
   source:
     repoURL: 'https://github.com/NeorCloud/arvan-exchange-apps.git'
-    path: pgo
+    path: prd/pgo
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
