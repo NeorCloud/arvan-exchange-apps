@@ -1,0 +1,43 @@
+postgrescluster:
+  postgresVersion: 16
+  pgBouncerReplicas: 1
+  monitoring: true
+  instances:
+  - name: pgha1
+    replicas: 3
+    dataVolumeClaimSpec:
+      storageClassName: topolvm-provisioner
+      accessModes:
+      - "ReadWriteOnce"
+      resources:
+        requests:
+          storage: 5Gi
+    resources:
+      requests:
+        memory: 1Gi
+        cpu: 1000m
+      limit:
+        memory: 2Gi
+        cpu: 2000m
+  patroni:
+    dynamicConfiguration:
+      synchronous_mode: true
+      postgresql:
+        parameters:
+          synchronous_commit: "on"
+  s3:
+    # bucket specifies the S3 bucket to use,
+    bucket: "exchange-pgbackrest"
+    # endpoint specifies the S3 endpoint to use.
+    endpoint: "s3.ir-thr-at1.arvanstorage.ir"
+    # region specifies the S3 region to use. If your S3 storage system does not
+    # use "region", fill this in with a random value.
+    region: "ir-thr-at1"
+    # key is the S3 key. This is stored in a Secret.
+    key: "2c6d67cf-d22b-425e-8042-984c08e8b76c"
+    # keySecret is the S3 key secret. This is stored in a Secret.
+    keySecret: "8feb3641b7c4ed3e6756b121ed6d932e7918688d9c9c73c597e34897b3bfb3b3"
+    # encryptionPassphrase is an optional parameter to enable encrypted backups
+    # with pgBackRest. This is encrypted by pgBackRest and does not use S3's
+    # built-in encryption system.
+    encryptionPassphrase: "WilIOSLEqYFWy2q3Az7ER5YWXlAVe56Yi9NI5ZN2t8ecESSI9L"
