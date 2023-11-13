@@ -6,4 +6,4 @@ version: 0.1.0
 dependencies:
 - name: pgo
   version: 5.x.x
-  repository: registry.sh1.exchange.neor.space/helm-charts
+  repository: oci://registry.sh1.exchange.neor.space/helm-charts
