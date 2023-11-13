@@ -6,14 +6,14 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: exchange-backend-prd
   source:
     repoURL: 'https://github.com/NeorCloud/arvan-exchange-apps.git'
     path: pgo
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: kube-prometheus-stack
+    namespace: exchange-backend-prd
   syncPolicy:
     automated:
       prune: true
