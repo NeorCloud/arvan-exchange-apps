@@ -10,7 +10,7 @@ spec:
   project: exchange-backend-prd
   source:
     path: prd/psql-cluster
-    repoURL: https://dev.azure.com/bama/Bama%20Services/_git/apps-manifests
+    repoURL: https://github.com/NeorCloud/arvan-exchange-apps.git
     targetRevision: main
   syncPolicy:
     automated:
