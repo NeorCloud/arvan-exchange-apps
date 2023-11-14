@@ -1,0 +1,50 @@
+mongodb:
+  global:
+    storageClass: topolvm-provisioner
+  
+  clusterDomain: k8s.ba1.exchnage.neor.space
+
+  architecture: replicaset
+
+  auth:
+    enabled: true
+    rootPassword: "4BaKU7ofwlttFuRDT1WWg8Mx9PR6voyRjMPY6BUXfeayq860Qm"
+    usernames:
+    - exchange_admin
+    passwords:
+    - 5kT8STcPExHTbYr4xHmsgNh22BZlgSth8YQB4MBkdXBcsuAwCa
+    databases:
+    - exchange
+    replicaSetKey: "BBjGaTaWTdW9a8X8w4NR9JAm4wMux9SM5R9guXT2mAG8NPUJ45"
+  
+  replicaSetName: ar-exchange-rs0
+  replicaSetConfigurationSettings:
+    enabled: true
+    configuration: {}
+
+  replicaCount: 3
+
+  resources:
+    requests:
+      cpu: 500m
+      memory: 256Mi
+    limits:
+      cpu: 1500m
+      memory: 1Gi
+
+  metrics:
+    enabled: true
+    username: metrics_user
+    password: 9Et5xItTQhsb6uP4oPCo3tCOfWv94O1TWXyl9SAYT97SsjNaUs
+
+    serviceMonitor:
+      enabled: true
+      namespace: kube-prometheus-stack
+      labels:
+        release: kube-prometheus-stack
+
+    prometheusRule:
+      enabled: true
+      namespace: kube-prometheus-stack
+      additionalLabels:
+        release: kube-prometheus-stack
