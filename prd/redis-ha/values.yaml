@@ -1,4 +1,5 @@
 redis:
+  enabled: true
   global:
     storageClass: topolvm-provisioner
   
