@@ -32,6 +32,9 @@ mongodb:
       cpu: 1500m
       memory: 1Gi
 
+  arbiter:
+    enabled: false
+
   metrics:
     enabled: true
     username: metrics_user
