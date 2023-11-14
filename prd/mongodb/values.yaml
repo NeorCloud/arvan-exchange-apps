@@ -2,7 +2,7 @@ mongodb:
   global:
     storageClass: topolvm-provisioner
   
-  clusterDomain: k8s.ba1.exchnage.neor.space
+  clusterDomain: k8s.ba1.exchange.neor.space
 
   architecture: replicaset
 
