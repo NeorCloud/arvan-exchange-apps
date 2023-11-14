@@ -39,7 +39,6 @@ mongodb:
   metrics:
     enabled: true
     username: metrics_user
-    password: 9Et5xItTQhsb6uP4oPCo3tCOfWv94O1TWXyl9SAYT97SsjNaUs
 
     serviceMonitor:
       enabled: true
