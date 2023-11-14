@@ -38,7 +38,6 @@ mongodb:
 
   metrics:
     enabled: true
-    username: metrics_user
 
     serviceMonitor:
       enabled: true
