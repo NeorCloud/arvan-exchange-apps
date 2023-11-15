@@ -1,0 +1,43 @@
+{{- if .Values.upgradeJobs }}
+{{- range $job := .Values.upgradeJobs }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ $job.name }}
+  annotations:
+    "helm.sh/hook": pre-upgrade,pre-install
+    "helm.sh/hook-delete-policy": hook-succeeded
+    "helm.sh/hook-weight": "-5"
+spec:
+  template:
+    spec:
+      containers:
+      - name: {{ $job.name }}
+        image: {{ $job.image.name }}:{{ $job.image.tag }}
+        command: {{ $job.command }}
+        {{- if or .Values.env .Values.secretEnv }}
+          env:
+            {{- range $key, $val := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $val | quote }}
+            {{- end }}
+            {{- range $item := .Values.secretEnv }}
+            - name: {{ $item.name }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $item.secretName }}
+                  key: {{ $item.key }}
+            {{- end }}
+          {{- end }}
+          {{- if .Values.envFrom }}
+          envFrom:
+            {{- range $val := .Values.envFrom }}
+            - configMapRef:
+                name: {{ $val }}
+            {{- end }}
+          {{- end }}
+      restartPolicy: Never
+  backoffLimit: 4
+{{- end }}
+{{- end }}
