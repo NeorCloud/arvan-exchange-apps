@@ -143,4 +143,5 @@ startupProbe:
 upgradeJobs: []
 # - name: hello
 #   image: nginx:latest
-#   command: ["echo", "hello"]
+#   command: ["echo"]
+#   args: ["hello"]
