@@ -1,0 +1,87 @@
+webapp-base:
+  enabled: true
+
+  replicaCount: 3
+
+  image:
+    repository: registry.neor.cloud/backend/panel
+    pullPolicy: IfNotPresent
+    tag: master-e5d46bc8e51476e8e5eb2ed8415de917f98d52ef
+
+  imagePullSecrets: []
+
+  service:
+    type: ClusterIP
+    port: 8000
+
+  ingress:
+    enabled: true
+    className: "kong"
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prd"
+    hosts:
+    - host: exchange.neor.space
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+    tls:
+    - secretName: exchange-neor-space-tls
+      hosts:
+      - exchange.neor.space
+
+  env:
+    TZ: Asia/Tehran
+    ALLOWED_HOSTS: exchange.neor.space
+    API_KEY: "sPixBruookNfbJEknMVbweAsPi"
+    SECRET_KEY: "xyjp2t)0(%7_h389)5!w44#=y7ncz2fe6k5%tmn$a%j+(()8e9"
+    DATABASE_NAME: "exchange"
+    DATABASE_USER: "postgres"
+    DATABASE_PASSWORD: "postgres"
+    DATABASE_HOST: "exchange-postgresql"
+    DATABASE_PORT: "5432"
+
+  resources:
+    limits:
+      cpu: 1
+      memory: 512Mi
+    requests:
+      cpu: 500m
+      memory: 128Mi
+
+  podSecurityContext:
+    fsGroup: 1000
+
+  securityContext:
+    capabilities:
+      drop:
+      - ALL
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1000
+
+  livenessProbe:
+    enabled: true
+    path: /
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
+
+  readinessProbe:
+    enabled: true
+    path: /
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
+
+  startupProbe:
+    enabled: false
+    path: /
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
