@@ -34,11 +34,23 @@ webapp-base:
     ALLOWED_HOSTS: exchange.neor.space,0.0.0.0
     API_KEY: "sPixBruookNfbJEknMVbweAsPi"
     SECRET_KEY: "xyjp2t)0(%7_h389)5!w44=y7ncz2fe6k5%tmn$a%j+(()8e9"
-    DATABASE_NAME: "exchange"
-    DATABASE_USER: "postgres"
-    DATABASE_PASSWORD: "postgres"
-    DATABASE_HOST: "exchange-postgresql"
-    DATABASE_PORT: "5432"
+
+  secretEnv:
+  - name: DATABASE_PASSWORD
+    secretName: psql-cluster-pguser-psql-cluster
+    secretKey: password
+  - name: DATABASE_USER
+    secretName: psql-cluster-pguser-psql-cluster
+    secretKey: user
+  - name: DATABASE_NAME
+    secretName: psql-cluster-pguser-psql-cluster
+    secretKey: dbname
+  - name: DATABASE_HOST
+    secretName: psql-cluster-pguser-psql-cluster
+    secretKey: pgbouncer-host
+  - name: DATABASE_PORT
+    secretName: psql-cluster-pguser-psql-cluster
+    secretKey: pgbouncer-port
 
   resources:
     limits:
