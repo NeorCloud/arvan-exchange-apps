@@ -18,7 +18,7 @@ spec:
           {{- toYaml $.Values.podSecurityContext | nindent 8 }}
       containers:
       - name: {{ $job.name }}
-        image: {{ $job.image.name }}:{{ $job.image.tag }}
+        image: {{ $job.image.repository }}:{{ $job.image.tag }}
         command: {{ $job.command }}
         securityContext:
             {{- toYaml $.Values.securityContext | nindent 12 }}
