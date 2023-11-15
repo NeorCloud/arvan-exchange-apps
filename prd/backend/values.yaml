@@ -38,19 +38,19 @@ webapp-base:
   secretEnv:
   - name: DATABASE_PASSWORD
     secretName: psql-cluster-pguser-psql-cluster
-    secretKey: password
+    key: password
   - name: DATABASE_USER
     secretName: psql-cluster-pguser-psql-cluster
-    secretKey: user
+    key: user
   - name: DATABASE_NAME
     secretName: psql-cluster-pguser-psql-cluster
-    secretKey: dbname
+    key: dbname
   - name: DATABASE_HOST
     secretName: psql-cluster-pguser-psql-cluster
-    secretKey: pgbouncer-host
+    key: pgbouncer-host
   - name: DATABASE_PORT
     secretName: psql-cluster-pguser-psql-cluster
-    secretKey: pgbouncer-port
+    key: pgbouncer-port
 
   resources:
     limits:
