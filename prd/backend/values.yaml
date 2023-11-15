@@ -75,7 +75,8 @@ webapp-base:
   upgradeJobs:
   - name: migrate
     image: *image
-    command: ["python", "manage.py", "migrate"]
+    command: ["python"]
+    args: ["manage.py", "migrate"]
 
   livenessProbe:
     enabled: true
