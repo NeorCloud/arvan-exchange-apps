@@ -6,7 +6,7 @@ version: 0.1.0
 dependencies:
 - name: webapp-base
   version: 0.1.0
-  repository: "file://../base/webapp-base"
+  repository: "file://../../base/webapp-base"
   condition: webapp-base.enabled
   tags:
   - "webapp-base"
