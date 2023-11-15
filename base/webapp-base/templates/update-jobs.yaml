@@ -12,10 +12,14 @@ metadata:
 spec:
   template:
     spec:
+      securityContext:
+          {{- toYaml $.Values.podSecurityContext | nindent 8 }}
       containers:
       - name: {{ $job.name }}
         image: {{ $job.image.name }}:{{ $job.image.tag }}
         command: {{ $job.command }}
+        securityContext:
+            {{- toYaml $.Values.securityContext | nindent 12 }}
         {{- if or $.Values.env $.Values.secretEnv }}
           env:
             {{- range $key, $val := $.Values.env }}
