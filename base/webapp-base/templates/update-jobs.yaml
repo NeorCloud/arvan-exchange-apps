@@ -21,26 +21,26 @@ spec:
         securityContext:
             {{- toYaml $.Values.securityContext | nindent 12 }}
         {{- if or $.Values.env $.Values.secretEnv }}
-          env:
-            {{- range $key, $val := $.Values.env }}
-            - name: {{ $key }}
-              value: {{ $val | quote }}
-            {{- end }}
-            {{- range $item := $.Values.secretEnv }}
-            - name: {{ $item.name }}
-              valueFrom:
-                secretKeyRef:
-                  name: {{ $item.secretName }}
-                  key: {{ $item.key }}
-            {{- end }}
+        env:
+          {{- range $key, $val := $.Values.env }}
+          - name: {{ $key }}
+            value: {{ $val | quote }}
           {{- end }}
-          {{- if $.Values.envFrom }}
-          envFrom:
-            {{- range $val := $.Values.envFrom }}
-            - configMapRef:
-                name: {{ $val }}
-            {{- end }}
+          {{- range $item := $.Values.secretEnv }}
+          - name: {{ $item.name }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ $item.secretName }}
+                key: {{ $item.key }}
           {{- end }}
+        {{- end }}
+        {{- if $.Values.envFrom }}
+        envFrom:
+          {{- range $val := $.Values.envFrom }}
+          - configMapRef:
+              name: {{ $val }}
+          {{- end }}
+        {{- end }}
       restartPolicy: Never
   backoffLimit: 4
 {{- end }}
