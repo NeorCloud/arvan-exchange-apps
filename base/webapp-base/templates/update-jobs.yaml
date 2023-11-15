@@ -16,13 +16,13 @@ spec:
       - name: {{ $job.name }}
         image: {{ $job.image.name }}:{{ $job.image.tag }}
         command: {{ $job.command }}
-        {{- if or .Values.env .Values.secretEnv }}
+        {{- if or $.Values.env $.Values.secretEnv }}
           env:
-            {{- range $key, $val := .Values.env }}
+            {{- range $key, $val := $.Values.env }}
             - name: {{ $key }}
               value: {{ $val | quote }}
             {{- end }}
-            {{- range $item := .Values.secretEnv }}
+            {{- range $item := $.Values.secretEnv }}
             - name: {{ $item.name }}
               valueFrom:
                 secretKeyRef:
@@ -30,9 +30,9 @@ spec:
                   key: {{ $item.key }}
             {{- end }}
           {{- end }}
-          {{- if .Values.envFrom }}
+          {{- if $.Values.envFrom }}
           envFrom:
-            {{- range $val := .Values.envFrom }}
+            {{- range $val := $.Values.envFrom }}
             - configMapRef:
                 name: {{ $val }}
             {{- end }}
