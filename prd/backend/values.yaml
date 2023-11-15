@@ -3,7 +3,7 @@ webapp-base:
 
   replicaCount: 3
 
-  image:
+  image: &image
     repository: registry.neor.cloud/backend/panel
     pullPolicy: IfNotPresent
     tag: master-e5d46bc8e51476e8e5eb2ed8415de917f98d52ef
@@ -71,6 +71,11 @@ webapp-base:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 1000
+
+  upgradeJobs:
+  - name: migrate
+    image: *image
+    command: ["python", "manage.py", "migrate"]
 
   livenessProbe:
     enabled: true
