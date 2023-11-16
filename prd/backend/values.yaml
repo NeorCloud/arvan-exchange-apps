@@ -2,9 +2,9 @@ webapp-base:
   enabled: true
   replicaCount: 3
   image: &image
-    repository: registry.neor.cloud/backend/panel
+    repository: registry.sh1.exchange.neor.space/backend/panel
     pullPolicy: IfNotPresent
-    tag: master-5cabcc6c6c9d22f26171aab25b99efae1ab94351
+    tag: master-0aff85a13263247cca330013bada1ad9649fc1a9
   imagePullSecrets: []
   service:
     type: ClusterIP
