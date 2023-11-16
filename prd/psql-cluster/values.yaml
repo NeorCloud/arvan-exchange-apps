@@ -1,6 +1,6 @@
 postgrescluster:
   postgresVersion: 16
-  pgBouncerReplicas: 1
+  pgBouncerReplicas: 3
   monitoring: true
   instances:
   - name: pgha1
