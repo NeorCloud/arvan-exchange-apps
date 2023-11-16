@@ -25,6 +25,10 @@ postgrescluster:
       postgresql:
         parameters:
           synchronous_commit: "on"
+  users:
+  - name: exhchange_admin
+    databases:
+    - exchange_db
   s3:
     # bucket specifies the S3 bucket to use,
     bucket: "exchange-pgbackrest"
