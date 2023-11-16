@@ -5,7 +5,7 @@ webapp-base:
     repository: registry.sh1.exchange.neor.space/backend/panel
     pullPolicy: IfNotPresent
     tag: master-0aff85a13263247cca330013bada1ad9649fc1a9
-  imagePullSecrets:
+  imagePullSecrets: &imagePullSecrets
     - sh1-registry
   service:
     type: ClusterIP
@@ -65,6 +65,7 @@ webapp-base:
   upgradeJobs:
     - name: migrate
       image: *image
+      imagePullSecrets: *imagePullSecrets
       command: ["python"]
       args: ["manage.py", "migrate"]
   livenessProbe:
