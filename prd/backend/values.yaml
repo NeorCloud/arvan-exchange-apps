@@ -62,7 +62,7 @@ webapp-base:
     readOnlyRootFilesystem: true
     runAsNonRoot: true
     runAsUser: 1000
-  upgradeJobs:
+  preUpgradeJobs:
     - name: migrate
       image: *image
       imagePullSecrets: *imagePullSecrets

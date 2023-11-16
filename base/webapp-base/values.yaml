@@ -140,7 +140,7 @@ startupProbe:
   failureThreshold: 6
   successThreshold: 1
 
-upgradeJobs: []
+preUpgradeJobs: []
 # - name: hello
 #   image: nginx:latest
 #   command: ["echo"]

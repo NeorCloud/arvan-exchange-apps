@@ -1,5 +1,5 @@
-{{- if .Values.upgradeJobs }}
-{{- range $job := .Values.upgradeJobs }}
+{{- if .Values.preUpgradeJobs }}
+{{- range $job := .Values.preUpgradeJobs }}
 ---
 apiVersion: batch/v1
 kind: Job
