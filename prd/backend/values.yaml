@@ -4,7 +4,7 @@ webapp-base:
   image: &image
     repository: registry.neor.cloud/backend/panel
     pullPolicy: IfNotPresent
-    tag: master-6a73d4bd0ae7dba1b494bea656bfd60b46c3745b
+    tag: master-5cabcc6c6c9d22f26171aab25b99efae1ab94351
   imagePullSecrets: []
   service:
     type: ClusterIP
