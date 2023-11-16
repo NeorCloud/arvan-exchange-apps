@@ -1,4 +1,5 @@
 postgrescluster:
+  enabled: false
   postgresVersion: 14
   pgBouncerReplicas: 3
   monitoring: true

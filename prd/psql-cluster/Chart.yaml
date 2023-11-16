@@ -7,3 +7,4 @@ dependencies:
   - name: postgrescluster
     version: 5.x.x
     repository: oci://registry.sh1.exchange.neor.space/helm-charts
+    condition: postgrescluster.enabled
