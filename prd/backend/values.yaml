@@ -65,8 +65,7 @@ webapp-base:
   preUpgradeJobs:
     - name: migrate
       image: *image
-      imagePullSecrets:
-      <<: *imagePullSecrets
+      imagePullSecrets: *imagePullSecrets
       command: ["python"]
       args: ["manage.py", "migrate"]
   livenessProbe:
