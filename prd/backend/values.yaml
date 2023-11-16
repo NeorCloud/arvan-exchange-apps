@@ -4,7 +4,7 @@ webapp-base:
   image: &image
     repository: registry.sh1.exchange.neor.space/backend/panel
     pullPolicy: IfNotPresent
-    tag: master-0aff85a13263247cca330013bada1ad9649fc1a9
+    tag: master-91a92cbcf2bbb3e3cf23027ee03264b6126e7dad
   imagePullSecrets: &imagePullSecrets
     - name: sh1-registry
   service:
