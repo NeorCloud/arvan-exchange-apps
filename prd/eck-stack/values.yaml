@@ -6,11 +6,7 @@ kibanaIngress:
   tlsSecretName: kibana-ba1-neor-space-tls
 
 elasticsearchIngress:
-  enabled: true
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prd
-  host: elasticsearch.exchange.neor.space
-  tlsSecretName: es-ba1-neor-space-tls
+  enabled: false
 
 eck-stack:
   eck-kibana:
