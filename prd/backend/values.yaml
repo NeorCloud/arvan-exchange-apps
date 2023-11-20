@@ -30,6 +30,7 @@ webapp-base:
     API_KEY: "sPixBruookNfbJEknMVbweAsPi"
     SECRET_KEY: "xyjp2t)0(%7_h389)5!w44=y7ncz2fe6k5%tmn$a%j+(()8e9"
     DEBUG: "True"
+    CSRF_TRUSTED_ORIGINS: "https://exchange.neor.space,http://127.0.0.1"
   secretEnv:
     - name: DATABASE_PASSWORD
       secretName: psql-cluster-pguser-exhchange-admin
