@@ -1,6 +1,6 @@
 webapp-base:
   enabled: true
-  replicaCount: 3
+  replicaCount: 10
   image: &image
     repository: registry.sh1.exchange.neor.space/backend/panel
     pullPolicy: IfNotPresent
